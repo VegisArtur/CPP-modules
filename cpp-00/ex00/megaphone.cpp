@@ -1,21 +1,24 @@
 #include <iostream>
 
+using namespace std;
+
 int	main(int argc, char **argv)
 {
 	int i = 1;
 	int j = 0;
 
+	(void)argc;
 	while (argv[i] != NULL)
 	{
 		j = 0;
 		while (argv[i][j] != 0)
 		{
-			argv[i][j] = std::toupper(argv[i][j]);
+			argv[i][j] = toupper(argv[i][j]);
 			j++;
 		}
-		std::cout << argv[i];
+		cout << argv[i];
 		i++;
 	}
-	std::cout << std::endl;
+	cout << endl;
 	return (0);
 }

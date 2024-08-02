@@ -8,8 +8,8 @@ class contact
 		std::string	name;
 		std::string	lastname;
 		std::string	nick;
+		std::string	num;
 		std::string	secret;
-		int			num;
 };
 
 class book
@@ -22,6 +22,6 @@ class book
 		std::string pri;
 };
 
-void	add(book book);
+void	add(book &book);
 
 #endif

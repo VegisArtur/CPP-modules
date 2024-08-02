@@ -1,6 +1,7 @@
 #include "phone.hpp"
 #include <string>
 #include <cctype>
+#include <algorithm>
 
 int	check_valid(std::string line)
 {
@@ -15,47 +16,59 @@ int	check_valid(std::string line)
 	return (-1);
 }
 
-// int	get_info_num(std::string print)
-// {
-// 	std::string	line;
-// 	int			num;
+bool is_numeric(const std::string& line) 
+{
+    return std::all_of(line.begin(), line.end(), [](char c)
+	{
+		return std::isdigit(c);
+	});
+}
 
-// 	std::cout << print << std::endl;
-// 	while (1)
-// 	{
-// 		std::getline(std::cin, line);
-// 		num = std::stoi(line);
-// 		std::cout << "Invalid input, try again" << std::endl;
-// 	}
-// 	return (0);
-// }
-
-std::string	get_info(std::string print, int flag)
+int	get_info_num(std::string print, int &num)
 {
 	std::string	line;
 
 	std::cout << print << std::endl;
 	while (1)
 	{
+		std::cin.width(11);
 		std::getline(std::cin, line);
-		if (flag == 1)
-			return (line);
-		if (check_valid(line) == 0)
-			return (line);
+
+		if (is_numeric(line) == true)
+			num = std::stoi(line);
 		std::cout << "Invalid input, try again" << std::endl;
 	}
-	return (NULL);
+	return (0);
 }
 
-void	add(book book)
+void	get_info(std::string print, int flag, std::string &line)
 {
-	(void)book;
-	contact		contact;
-	std::string	line;
+	std::cout << print << std::endl;
+	while (1)
+	{
+		std::getline(std::cin, line);
+		if (flag == 1)
+			return ;
+		if (flag == 2 && is_numeric(line) == true)
+			return ;
+		if (flag == 0 && check_valid(line) == 0)
+			return ;
+		std::cout << "Invalid input!!" << std::endl;
+		if (flag == 2)
+		{
+			std::cout << "Try again with only numbers." << std::endl;
+			continue ;
+		}
+		std::cout << "Try again without spaces.." << std::endl;
+	}
+}
 
-	contact.name = get_info("Specify a name", 0);
-	contact.lastname = get_info("Specify a last name", 0);
-	contact.nick = get_info("Specify a nickname", 0);
-	// contact.num = get_info_num("Specify the number");
-	contact.secret = get_info("Darkest secret ;)", 1);
+void	add(book &book)
+{
+	get_info("Specify a name", 0, book.people[book.count % 8].name);
+	get_info("Specify a last name", 0, book.people[book.count % 8].lastname);
+	get_info("Specify a nickname", 0, book.people[book.count % 8].nick);
+	get_info("Specify the number", 2, book.people[book.count % 8].num);
+	get_info("Darkest secret)", 1, book.people[book.count % 8].secret);
+	book.count++;
 }

@@ -22,8 +22,9 @@ class PhoneBook
 		std::string pri;
 };
 
+bool 	is_numeric(const std::string& line);
 void	cmd_add(PhoneBook &book);
 
-void	cmd_search(PhoneBook book);
+void	cmd_search(PhoneBook book, int count);
 
 #endif

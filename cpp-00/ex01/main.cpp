@@ -8,19 +8,29 @@ int	main()
 
 	while (1)
 	{
-	std::cout << std::endl << "Type a command" << std::endl << std::endl;
-	std::cout << "ADD: Creates a new contact" << std::endl;
-	std::cout << "SEARCH: displays all your contacts" << std::endl;
-	std::cout << "EXIT: leaves the phonebook" << std::endl << std::endl;
-	std::getline(std::cin, cmd);
-	if (cmd == "ADD")
-		cmd_add(book);
-	if (cmd == "SEARCH")
-		cmd_search(book);
-	if (cmd == "EXIT")
-		break ;
-	if (cmd == "DEBUG")
-		std::cout << book.people[0].name << std::endl << book.people[0].lastname << std::endl;
+		std::cout << std::endl << "Type a command" << std::endl << std::endl;
+		std::cout << "ADD: Creates a new contact" << std::endl;
+		std::cout << "SEARCH: Displays all your contacts" << std::endl;
+		std::cout << "EXIT: Leaves the phonebook" << std::endl << std::endl;
+		std::getline(std::cin, cmd);
+		if (cmd == "ADD")
+			cmd_add(book);
+		if (cmd == "SEARCH")
+			cmd_search(book, book.count);
+		if (cmd == "EXIT")
+			break ;
+		// if (cmd == "ADD1")
+		// {
+		// 	for (int i = 0; i < 8; i++)
+		// 	{
+		// 		book.people[book.count % 8].name = "add" + std::to_string(i+1);
+		// 		book.people[book.count % 8].lastname = "add" + std::to_string(i+1);
+		// 		book.people[book.count % 8].nick = "add" + std::to_string(i+1);
+		// 		book.people[book.count % 8].num = "123" + std::to_string(i+1);
+		// 		book.people[book.count % 8].secret = "add" + std::to_string(i+1);
+		// 		book.count++;
+		// 	}
+		// }
 	}
 	return (0);
 }

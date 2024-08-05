@@ -3,7 +3,7 @@
 int	main()
 {
 	std::string cmd;
-	book		book;
+	PhoneBook	book;
 	book.count = 0;
 
 	while (1)
@@ -14,9 +14,9 @@ int	main()
 	std::cout << "EXIT: leaves the phonebook" << std::endl << std::endl;
 	std::getline(std::cin, cmd);
 	if (cmd == "ADD")
-		add(book);
+		cmd_add(book);
 	if (cmd == "SEARCH")
-		std::cout << cmd << std::endl;
+		cmd_search(book);
 	if (cmd == "EXIT")
 		break ;
 	if (cmd == "DEBUG")

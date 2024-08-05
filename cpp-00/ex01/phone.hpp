@@ -2,7 +2,7 @@
 #define PHONE_HPP
 #include <iostream>
 
-class contact
+class Contact
 {
 	public:
 		std::string	name;
@@ -12,16 +12,18 @@ class contact
 		std::string	secret;
 };
 
-class book
+class PhoneBook
 {
 	public:
-		contact people[8];
+		Contact people[8];
 		int		count;
 
 	private:
 		std::string pri;
 };
 
-void	add(book &book);
+void	cmd_add(PhoneBook &book);
+
+void	cmd_search(PhoneBook book);
 
 #endif

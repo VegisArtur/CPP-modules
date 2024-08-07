@@ -13,7 +13,7 @@ int	check_valid(std::string line)
 	return (-1);
 }
 
-bool is_numeric(const std::string& line) 
+bool is_numeric(const std::string& line)
 {
     return std::all_of(line.begin(), line.end(), [](char c)
 	{

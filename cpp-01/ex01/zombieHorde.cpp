@@ -10,8 +10,3 @@ Zombie*	zombieHorde(int N, std::string name)
 	}
 	return (zombies);
 }
-
-void	deletHorde(Zombie *zombies)
-{
-	delete zombies;
-}

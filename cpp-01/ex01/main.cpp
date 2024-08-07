@@ -9,12 +9,8 @@ int	main(void)
 	for (int i = 0; i < Decrepit; i++)
 		hordeOne[i].announce();
 	for (int i = 0; i < Fresh; i++)
-		hordeOne[i].announce();
-	deletHorde(hordeOne);
-	while (Fresh > 0)
-	{
-		hordeTwo->deadZombie(hordeTwo[Fresh]);
-
-	}
+		hordeTwo[i].announce();
+	delete[] hordeOne;
+	delete[] hordeTwo;
 	return (0);
 }

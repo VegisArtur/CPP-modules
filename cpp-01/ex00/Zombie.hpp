@@ -5,24 +5,11 @@
 class Zombie
 {
 	public:
-		void announce(void)
-		{
-			if (name == "Foo")
-			{
-				std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-				return ;
-			}
-			std::cout << '<' << name << '>' << ": BraiiiiiiinnnzzzZ..." << std::endl;
-		}
-		Zombie(std::string str)
-		{
-			name = str;
-		}
-		void deadZombie(Zombie *zombie)
-		{
-			std::cout << name << ": has been killed!!" << std::endl;
-			delete zombie;
-		}
+		Zombie();
+		Zombie(std::string str);
+		~Zombie();
+		void 	announce(void);
+		void	assignName(std::string str);
 
 	private:
 		std::string name;

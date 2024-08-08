@@ -2,6 +2,8 @@
 
 int	main(void)
 {
+	Zombie zombiea;
+	zombiea.assignName("sad");
 	int Decrepit = 5;
 	int Fresh = 2;
 	Zombie* hordeOne = zombieHorde(Decrepit, "Decrepit Zombie");

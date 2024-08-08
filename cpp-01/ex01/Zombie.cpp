@@ -18,7 +18,7 @@ void	Zombie::assignName(std::string str)
 	name = str;
 }
 
-void Zombie::announce(void)
+void	Zombie::announce(void)
 {
 	if (name == "Foo")
 	{

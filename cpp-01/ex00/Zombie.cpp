@@ -1,14 +1,29 @@
 #include "Zombie.hpp"
 
-void	zombies(void)
+Zombie::Zombie() : name("Unnamed")
 {
-	std::string input;
-	std::cout << std::endl << "Testing newZombie function" << std::endl;
-	std::getline(std::cin, input);
-	Zombie *zombie = newZombie(input);
-	zombie->announce();
-	zombie->deadZombie(zombie);
-	std::cout << std::endl << "Testing randomChump function" << std::endl;
-	std::getline(std::cin, input);
-	randomChump(input);
+}
+
+Zombie::Zombie(std::string str) : name(str)
+{
+}
+
+Zombie::~Zombie()
+{
+	std::cout << name << ": has been killed!!" << std::endl;
+}
+
+void	Zombie::assignName(std::string str)
+{
+	name = str;
+}
+
+void	Zombie::announce(void)
+{
+	if (name == "Foo")
+	{
+		std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+		return ;
+	}
+	std::cout << '<' << name << '>' << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

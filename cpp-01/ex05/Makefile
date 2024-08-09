@@ -1,7 +1,7 @@
 CC			=	c++
 CFLAGS		=	-Wall -Werror -Wextra
-NAME		=	violence
-SRC			=	main.cpp
+NAME		=	Harl2
+SRC			=	main.cpp Harl.cpp
 OBJ			=	$(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -17,7 +17,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f output.txt
 
 re: clean all
 

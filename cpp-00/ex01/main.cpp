@@ -13,6 +13,8 @@ int	main()
 		std::cout << "SEARCH: Displays all your contacts" << std::endl;
 		std::cout << "EXIT: Leaves the phonebook" << std::endl << std::endl;
 		std::getline(std::cin, cmd);
+		if (std::cin.eof())
+			break;
 		if (cmd == "ADD")
 			cmd_add(book);
 		if (cmd == "SEARCH")

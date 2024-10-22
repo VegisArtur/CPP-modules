@@ -53,6 +53,8 @@ void	cmd_search(PhoneBook book, int count)
 	while (1)
 	{
 		std::getline(std::cin, line);
+		if (std::cin.eof())
+			return;
 		if (line.empty() == false && is_numeric(line) == true)
 			value = std::stoi(line);
 		if ((value < 1 || value > 8) || (count < 8 && value > count))

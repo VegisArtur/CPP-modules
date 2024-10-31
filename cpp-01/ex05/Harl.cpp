@@ -20,11 +20,14 @@ void	Harl::error( void ) {
 typedef	void	(Harl::*message)( void );
 
 void	Harl::complain( std::string level) {
-	Harl msg;
-	message debug = &Harl::debug;
-	message info = &Harl::info;
-	message warning = &Harl::warning;
-	message error = &Harl::error;
-	level == "debug" ? (msg.*debug)() : (level == "info" ? (msg.*info)() : (level == "warning" ? (msg.*warning)() : (level == "error" ? (msg.*error)() : void())));
+	std::string levels[] = {"debug", "info", "warning", "error"};
+	message functions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
+	for (int i = 0; i < 4; ++i) {
+		if (levels[i] == level) {
+			(this->*functions[i])();
+			return;
+		}
+	}
+	std::cout << "Unknown message!!!" << std::endl;
 }

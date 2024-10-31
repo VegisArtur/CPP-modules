@@ -1,4 +1,4 @@
-CC			=	c++
+CC			=	c++ -std=c++11
 CFLAGS		=	-Wall -Werror -Wextra
 NAME		=	Harl2
 SRC			=	main.cpp Harl.cpp

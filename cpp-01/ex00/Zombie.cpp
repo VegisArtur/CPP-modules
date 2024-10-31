@@ -20,10 +20,5 @@ void	Zombie::assignName(std::string str)
 
 void	Zombie::announce(void)
 {
-	if (name == "Foo")
-	{
-		std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-		return ;
-	}
-	std::cout << '<' << name << '>' << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

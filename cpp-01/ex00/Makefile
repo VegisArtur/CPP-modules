@@ -1,5 +1,5 @@
 CC			=	c++
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -std=c++11
 NAME		=	BraiiiiiiinnnzzzZ
 SRC			=	main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJ			=	$(SRC:.cpp=.o)

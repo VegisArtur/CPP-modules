@@ -1,10 +1,10 @@
-#include "phone.hpp"
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 int	main()
 {
 	std::string cmd;
 	PhoneBook	book;
-	book.count = 0;
 
 	while (1)
 	{
@@ -16,23 +16,11 @@ int	main()
 		if (std::cin.eof())
 			break;
 		if (cmd == "ADD")
-			cmd_add(book);
+			book.cmd_add();
 		if (cmd == "SEARCH")
-			cmd_search(book, book.count);
+			book.cmd_search();
 		if (cmd == "EXIT")
 			break ;
-		// if (cmd == "ADD1")
-		// {
-		// 	for (int i = 0; i < 8; i++)
-		// 	{
-		// 		book.people[book.count % 8].name = "add" + std::to_string(i+1);
-		// 		book.people[book.count % 8].lastname = "add" + std::to_string(i+1);
-		// 		book.people[book.count % 8].nick = "add" + std::to_string(i+1);
-		// 		book.people[book.count % 8].num = "123" + std::to_string(i+1);
-		// 		book.people[book.count % 8].secret = "add" + std::to_string(i+1);
-		// 		book.count++;
-		// 	}
-		// }
 	}
 	return (0);
 }

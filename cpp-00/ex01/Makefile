@@ -1,7 +1,7 @@
 CC			=	c++
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 NAME		=	phonebook
-SRC			=	main.cpp	cmd_add.cpp	cmd_search.cpp
+SRC			=	main.cpp	PhoneBook.cpp	Contact.cpp
 OBJ			=	$(SRC:.cpp=.o)
 
 all: $(NAME)

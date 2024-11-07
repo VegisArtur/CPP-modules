@@ -2,7 +2,7 @@
 
 int	main() {
 	Fixed a;
-	a.setRawBits(123);
+	// a.setRawBits(123);
 	Fixed b(a);
 	Fixed c;
 

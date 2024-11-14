@@ -1,6 +1,6 @@
 #include "Weapon.hpp"
 
-Weapon::Weapon() : type("Typeless") {
+Weapon::Weapon() : type("typeless weapon") {
 }
 
 Weapon::Weapon(std::string str) : type(str) {

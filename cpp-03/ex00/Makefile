@@ -1,7 +1,7 @@
-CC			=	c++ -std=c++11
-CFLAGS		=	-Wall -Werror -Wextra
-NAME		=	sed
-SRC			=	main.cpp
+CC			=	c++
+CFLAGS		=	-Wall -Werror -Wextra -std=c++11
+NAME		=	TheClappening
+SRC			=	main.cpp ClapTrap.cpp
 OBJ			=	$(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -17,7 +17,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f output.txt
 
 re: clean all
 

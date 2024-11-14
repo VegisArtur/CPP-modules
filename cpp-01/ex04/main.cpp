@@ -23,15 +23,41 @@ int	main(int argc, char **argv) {
 	std::string newString;
 	std::string line;
 	int			len = str1.length();
+	char		ch;
 
 	if (str1.empty())
 	{
-		while (std::getline(in, line))	{
-			out << line << std::endl;
+		while (in.get(ch))	{
+			line += ch;
+			if (ch == '\n')	{
+				out << line;
+				line.clear();
+			}
+		}
+		if (!line.empty())	{
+			out << line;
 		}
 	} else {
-		while (std::getline(in, line)) {
-			while (line.length() > 0) {
+		while (in.get(ch))	{
+			line += ch;
+			if (ch == '\n')	{
+				while (line.length() > 0) {
+					size_t pos = line.find(str1);
+					if (pos != std::string::npos) {
+						newString = newString + line.substr(0, pos) + str2;
+						line.erase(0, pos+len);
+					} else {
+						newString += line;
+						break ;
+					}
+				}
+				out << newString;
+				line.clear();
+				newString.clear();
+			}
+		}
+		if (!line.empty())	{
+			while (!line.empty()) {
 				size_t pos = line.find(str1);
 				if (pos != std::string::npos) {
 					newString = newString + line.substr(0, pos) + str2;
@@ -41,8 +67,7 @@ int	main(int argc, char **argv) {
 					break ;
 				}
 			}
-			out << newString << std::endl;
-			newString = "";
+			out << newString;
 		}
 	}
 	in.close();

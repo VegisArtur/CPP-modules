@@ -1,11 +1,11 @@
 #include "Fixed.hpp"
+#include <iostream>
+#include <cmath>
 
 Fixed::Fixed() : value(0) {
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other) : value(other.value) {
-	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int raw) {
@@ -17,28 +17,23 @@ Fixed::Fixed(const float raw) {
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed&  Fixed::operator=(const Fixed& C) {
-	std::cout << "Copy assignement operator called" << std::endl;
 	if (this != &C)
 		value = C.value;
 	return (*this);
 }
 
 int Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (value);
 }
 
 int Fixed::getBit(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (bit);
 }
 
 void Fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member fuction called" << std::endl;
 	value = raw;
 }
 
@@ -54,54 +49,73 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
 	os << fixed.toFloat();
 	return (os);
 }
-
-Fixed	Fixed::operator>(const Fixed& other) const	{
+bool	Fixed::operator>(const Fixed& other) const	{
 	return (this->value > other.value);
 }
 
+bool	Fixed::operator>=(const Fixed& other) const	{
+	return (this->value >= other.value);
+}
+
+bool	Fixed::operator<(const Fixed& other) const	{
+	return (this->value < other.value);
+}
+
+bool	Fixed::operator<=(const Fixed& other) const	{
+	return (this->value <= other.value);
+}
+
+bool	Fixed::operator==(const Fixed& other) const	{
+	return (this->value == other.value);
+}
+
+bool	Fixed::operator!=(const Fixed& other) const	{
+	return (this->value != other.value);
+}
+
 Fixed&	Fixed::operator++()	{
-	this->value += (1 << bit);
+	this->value += 1;
 	return (*this);
 }
 
-Fixed&	Fixed::operator++(int)	{
+Fixed	Fixed::operator++(int)	{
 	Fixed temp = *this;
-	this->value -= (1 << bit);
+	this->value += 1;
 	return (temp);
 }
 
 Fixed&	Fixed::operator--()	{
-	this->value -= (1 << bit);
+	this->value -= 1;
 	return (*this);
 }
 
-Fixed&	Fixed::operator--(int)	{
+Fixed	Fixed::operator--(int)	{
 	Fixed temp = *this;
-	this->value -= (1 << bit);
+	this->value -= 1;
 	return (temp);
 }
 
 Fixed	Fixed::operator+(const Fixed& other) const	{
 	Fixed result;
-	result.value = this->value + other.value;
+	result.value = (this->value + other.value);
 	return (result);
 }
 
 Fixed	Fixed::operator-(const Fixed& other) const	{
 	Fixed result;
-	result.value = this->value - other.value;
+	result.value = (this->value - other.value);
 	return (result);
 }
 
 Fixed	Fixed::operator*(const Fixed& other) const	{
 	Fixed result;
-	result.value = this->value * other.value;
+	result.value = (this->value * other.value) >> bit;
 	return (result);
 }
 
 Fixed	Fixed::operator/(const Fixed& other) const	{
 	Fixed result;
-	result.value = this->value / other.value;
+	result.value = (this->value << bit) / other.value;
 	return (result);
 }
 

@@ -1,14 +1,11 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string value) : name(value) {
-	std::cout << "Default constructor called" << std::endl;
-	hitPoints = 10;
-	energyPoints = 10;
-	attackDamage = 0;
+ClapTrap::ClapTrap(std::string value) : name(value), hitPoints(100), energyPoints(50), attackDamage(20) {
+	std::cout << name << "'s constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()	{
-	std::cout << "Default destructor called" << std::endl;
+	std::cout << name << "'s destructor called" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)	{
@@ -38,4 +35,20 @@ void ClapTrap::beRepaired(unsigned int amount)	{
 	std::cout << name << " repairs themselves for " << amount << " points." << std::endl;
 	hitPoints += amount;
 	energyPoints--;
+}
+
+std::string ClapTrap::getName()	{
+	return name;
+}
+
+unsigned int ClapTrap::getHitpoints()	{
+	return hitPoints;
+}
+
+unsigned int ClapTrap::getEnergyPoints()	{
+	return energyPoints;
+}
+
+unsigned int ClapTrap::getAttackDamage()	{
+	return attackDamage;
 }

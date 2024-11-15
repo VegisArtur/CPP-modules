@@ -7,6 +7,10 @@ ClapTrap::ClapTrap(std::string value) : name(value) {
 	attackDamage = 0;
 }
 
+ClapTrap::ClapTrap(const ClapTrap& other) : name(other.name), hitPoints(other.hitPoints), energyPoints(other.energyPoints), attackDamage(other.attackDamage) {
+	std::cout << other.name << "'s copy constructor called" << std::endl;
+}
+
 ClapTrap::~ClapTrap()	{
 	std::cout << "Default destructor called" << std::endl;
 }

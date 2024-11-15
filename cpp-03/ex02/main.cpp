@@ -1,5 +1,7 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include <iostream>
 
 int	main(void)
 {
@@ -21,4 +23,10 @@ int	main(void)
 	ScavTrap aloof(guard);
 	aloof.setName("Slacker");
 	aloof.takeDamage(20);
+
+	FragTrap hypeman("Hyper");
+	std::cout << hypeman.getHitpoints() << std::endl;
+	hypeman.beRepaired(69);
+	std::cout << hypeman.getHitpoints() << std::endl;
+	hypeman.highFivesGuys();
 }

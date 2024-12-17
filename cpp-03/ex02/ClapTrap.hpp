@@ -20,7 +20,7 @@ class ClapTrap
 		void			setAttackDamage(unsigned int value);
 
 
-	private:
+	protected:
 		std::string 	name;
 		unsigned int	hitPoints;
 		unsigned int	energyPoints;

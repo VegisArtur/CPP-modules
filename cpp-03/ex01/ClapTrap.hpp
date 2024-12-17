@@ -7,7 +7,7 @@ class ClapTrap
 		ClapTrap(std::string value);
 		ClapTrap(const ClapTrap& other);
 		~ClapTrap();
-		void 			attack(const std::string& target);
+		virtual void	attack(const std::string& target);
 		void			takeDamage(unsigned int amount);
 		void 			beRepaired(unsigned int amount);
 		std::string		getName();
@@ -20,7 +20,7 @@ class ClapTrap
 		void			setAttackDamage(unsigned int value);
 
 
-	private:
+	protected:
 		std::string 	name;
 		unsigned int	hitPoints;
 		unsigned int	energyPoints;

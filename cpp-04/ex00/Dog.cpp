@@ -19,3 +19,7 @@ Dog& Dog::operator=(const Dog& other)	{
 		this->type = other.type;
 	return *this;
 }
+
+void Dog::makeSound() const	{
+	std::cout << "Bark" << std::endl;
+}

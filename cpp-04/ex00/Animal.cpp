@@ -19,16 +19,7 @@ Animal& Animal::operator=(const Animal& other)	{
 }
 
 void Animal::makeSound() const	{
-	if (type == "Cat")	{
-		std::cout << "Meow" << std::endl;
-		return ;
-	}
-	else if (type == "Dog")	{
-		std::cout << "Bark" << std::endl;
-		return ;
-	}
-	else
-		std::cout << "BOOOooOOooOOO" << std::endl;
+	std::cout << "BOOOooOOooOOO" << std::endl;
 }
 
 std::string Animal::getType() const	{

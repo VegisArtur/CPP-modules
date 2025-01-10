@@ -1,7 +1,7 @@
 CC			=	c++
 CFLAGS		=	-Wall -Werror -Wextra -std=c++11
 NAME		=	zoo
-SRC			=	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRC			=	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJ			=	$(SRC:.cpp=.o)
 
 all: $(NAME)

@@ -1,7 +1,7 @@
 CC			=	c++
 CFLAGS		=	-Wall -Werror -Wextra -std=c++17
 NAME		=	bureocracy
-SRC			=	main.cpp Bureaucrat.cpp
+SRC			=	main.cpp Bureaucrat.cpp Form.cpp
 OBJ			=	$(SRC:.cpp=.o)
 
 all: $(NAME)

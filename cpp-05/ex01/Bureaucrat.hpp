@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
 
-std::ostream&	operator<<(std::ostream& os, const class Bureaucrat& ref);
+std::ostream& operator<<(std::ostream& os, const class Bureaucrat& ref);
+
+class Form;
 
 class Bureaucrat
 {
@@ -14,6 +16,7 @@ class Bureaucrat
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
+		void signForm(Form &ref);
 		
 	private:
 		const std::string	name;

@@ -1,10 +1,12 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-	Bureaucrat bob(10, "Bob");
+	Bureaucrat bob(135, "Bob");
 	Bureaucrat dan(140, "Dan");
 	ShrubberyCreationForm woods("Woods");
 
@@ -16,6 +18,22 @@ int main()
 	bob.executeForm(woods);
 
 	std::cout << "---------- ||| ----------" << std::endl;
+
+	Bureaucrat scientist(24, "scientist");
+	RobotomyRequestForm duh("duh");
+
+	scientist.executeForm(duh);
+	scientist.signForm(duh);
+	scientist.executeForm(duh);
+
+	std::cout << "---------- ||| ----------" << std::endl;
+
+	Bureaucrat president(4, "Beeble");
+	PresidentialPardonForm scofield("scofield");
+
+	scientist.signForm(scofield);
+	scientist.executeForm(scofield);
+	president.executeForm(scofield);
 
 	return 0;
 }

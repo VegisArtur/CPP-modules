@@ -31,6 +31,5 @@ class Bureaucrat
 		{
 			const char* what() const noexcept;
 		};
-		void nonExecutable();
 };
 

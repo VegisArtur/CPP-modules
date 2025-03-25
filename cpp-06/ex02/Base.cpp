@@ -33,23 +33,29 @@ void Base::identify(Base* p)
 }
 
 void Base::identify(Base& p) {
-	try {
+	try
+	{
 		(void)dynamic_cast<A&>(p);
 		std::cout << "Type A" << std::endl;
 		return;
-	} catch (...) {}
+	}
+	catch (...) {}
 
-	try {
+	try
+	{
 		(void)dynamic_cast<B&>(p);
 		std::cout << "Type B" << std::endl;
 		return;
-	} catch (...) {}
+	}
+	catch (...) {}
 
-	try {
+	try
+	{
 		(void)dynamic_cast<C&>(p);
 		std::cout << "Type C" << std::endl;
 		return;
-	} catch (...) {}
+	}
+	catch (...) {}
 
 	std::cout << "Unknown type" << std::endl;
 }

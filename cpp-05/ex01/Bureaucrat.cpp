@@ -72,7 +72,7 @@ void Bureaucrat::signForm(Form &ref)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << name << " couldn't " << ref.getName() << " because " << e.what() << std::endl;
+		std::cerr << name << " couldn't sign " << ref.getName() << " because " << e.what() << std::endl;
 		std::cerr << "Required clearance " << ref.getSignGrade() << std::endl;
 		std::cerr << name << "'s grade is " << grade << std::endl;
 	}

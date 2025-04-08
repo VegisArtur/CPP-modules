@@ -7,7 +7,8 @@ int main()
 	std::cout << b1;
 	std::cout << b2.getName() << " " << b2.getGrade() << std::endl;
 
-	try {
+	try
+	{
 		b1.incrementGrade();
 		std::cout << b1;
 		b2.decrementGrade();
@@ -22,7 +23,8 @@ int main()
 
 	b1.decrementGrade();
 
-	try {
+	try
+	{
 		b1.decrementGrade();
 	}
 	catch (std::exception &e) 
@@ -32,7 +34,8 @@ int main()
 
 	b2.incrementGrade();
 
-	try {
+	try
+	{
 		b2.incrementGrade();
 	}
 	catch (std::exception &e) 

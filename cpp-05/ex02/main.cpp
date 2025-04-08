@@ -12,6 +12,8 @@ int main()
 
 	std::cout << woods;
 
+	std::cout << "---------- ||| ----------" << std::endl;
+
 	bob.executeForm(woods);
 	dan.signForm(woods);
 	dan.executeForm(woods);
@@ -21,6 +23,8 @@ int main()
 
 	Bureaucrat scientist(24, "scientist");
 	RobotomyRequestForm duh("duh");
+
+	std::cout << duh;
 
 	scientist.executeForm(duh);
 	scientist.signForm(duh);

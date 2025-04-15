@@ -25,8 +25,6 @@ static void HandleNan(const std::string &literal)
 		charValue = static_cast<char>(intValue);
 		doubleValue = static_cast<double>(floatValue);
 	}
-	(void)intValue;
-	(void)charValue;
 	std::cout << "char: " << "impossible" << std::endl;
 	std::cout << "int: " << "impossible" << std::endl;
 	std::cout << "float: " << std::fixed << floatValue << "f" << std::endl;
@@ -35,17 +33,17 @@ static void HandleNan(const std::string &literal)
 
 void ScalarConverter::convert(const std::string &literal)
 {
-	char charValue = '\0';
-	int intValue = 0;
-	float floatValue = 0.0f;
-	double doubleValue = 0.0;
-	bool isChar = false, isInt = false, isFloat = false, isDouble = false;
-
 	if (literal == "nan" || literal == "nanf")
 	{
 		HandleNan(literal);
 		return;
 	}
+	
+	bool isChar = false, isInt = false, isFloat = false, isDouble = false;
+	char charValue = '\0';
+	int intValue = 0;
+	float floatValue = 0.0f;
+	double doubleValue = 0.0;
 
 	if (literal.length() == 1 && !std::isdigit(literal[0]))
 		isChar = true;

@@ -16,12 +16,14 @@ Base* Base::generate()
 		return new A();
 	else if (random == 1)
 		return new B();
-	else
+	else if (random == 2)
 		return new C();
+	return nullptr;
 }
 
 void Base::identify(Base* p)
 {
+	std::cout << "Pointer = ";
 	if (dynamic_cast<A*>(p))
 		std::cout << "Type A" << std::endl;
 	else if (dynamic_cast<B*>(p))
@@ -32,7 +34,9 @@ void Base::identify(Base* p)
 		std::cout << "Unknown type" << std::endl;
 }
 
-void Base::identify(Base& p) {
+void Base::identify(Base& p)
+{
+	std::cout << "Reference = ";
 	try
 	{
 		(void)dynamic_cast<A&>(p);

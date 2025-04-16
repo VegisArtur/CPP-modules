@@ -57,8 +57,8 @@ class Array
 		const T& operator[](int i) const
 		{
 			if (i >= static_cast<int>(len) || i < 0)
-                throw (std::out_of_range("Index out of bounds!!"));
-            return (array[i]);
+				throw (std::out_of_range("Index out of bounds!!"));
+			return (array[i]);
 		}
 
 		int size() {return len;}

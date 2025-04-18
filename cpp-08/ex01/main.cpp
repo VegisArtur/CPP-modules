@@ -1,27 +1,9 @@
 #include "Span.hpp"
-#include <sstream>
-#include <fstream>
-
-std::vector<int> readNumbersFromFile(const std::string &filename)
-{
-	std::ifstream file(filename);
-	std::vector<int> numbers;
-	int number;
-
-	if (!file.is_open())
-		throw std::runtime_error("Could not open the file.");
-
-	while (file >> number)
-		numbers.push_back(number);
-
-	file.close();
-	return numbers;
-}
+#include <random>
 
 int main()
 {
-	// Span sp = Span(5);
-	Span sp = Span(10015);
+	Span sp = Span(15);
 
 	try
 	{
@@ -61,12 +43,22 @@ int main()
 	
 	try
 	{
-		std::vector<int> nums = readNumbersFromFile("numbers.txt");
-		std::cout << nums.size() << std::endl;
+		const size_t n = 50000;
+		std::vector<int> nums;
+		nums.reserve(n);
 
-		sp.addRange(nums.begin(), nums.end());
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		std::random_device rd;
+		std::mt19937 gen(rd()); // Mersenne Twister engine
+		std::uniform_int_distribution<> dist(1, 1000000);
+
+		for (size_t i = 0; i < n; ++i)
+			nums.push_back(dist(gen));
+		std::cout << "Generated " << nums.size() << " numbers." << std::endl;
+
+		Span huge(n);
+		huge.addRange(nums.begin(), nums.end());
+		std::cout << huge.shortestSpan() << std::endl;
+		std::cout << huge.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e) {std::cerr << e.what() << std::endl;}
 	

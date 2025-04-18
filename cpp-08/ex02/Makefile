@@ -1,7 +1,7 @@
 CC			=	c++
 CFLAGS		=	-Wall -Werror -Wextra -std=c++17
 NAME		=	container
-SRC			=	main.cpp Span.cpp
+SRC			=	main.cpp
 OBJ			=	$(SRC:.cpp=.o)
 
 all: $(NAME)

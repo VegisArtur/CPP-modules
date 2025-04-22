@@ -8,7 +8,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ)
-	touch numbers.txt
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -18,7 +17,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -rf numbers.txt
 
 re: clean all
 

@@ -79,9 +79,9 @@ class MutantStack : public std::stack<T>
 {
 	public:
 	typedef typename std::stack<T>::container_type container_type;
-	MutantStack() {}
-	MutantStack(const MutantStack& other) : std::stack<T>(other) {}
-	~MutantStack() {}
+	MutantStack() = default;
+	MutantStack(const MutantStack& other) = default;
+	~MutantStack() = default;
 	MutantStack& operator=(const MutantStack& other)
 	{
 		if (this != &other)

@@ -4,6 +4,12 @@
 #include <string>
 #include <map>
 
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <algorithm>
+#include <stdexcept>
+
 class BitcoinExchange
 {
 	private:

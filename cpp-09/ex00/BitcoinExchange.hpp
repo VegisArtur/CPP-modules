@@ -10,6 +10,11 @@
 #include <algorithm>
 #include <stdexcept>
 
+const int MAXYEAR = 2024;
+const int MINYEAR = 2008;
+const int monthDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+const int maxInput = 1000;
+
 class BitcoinExchange
 {
 	private:
@@ -21,5 +26,9 @@ class BitcoinExchange
 		BitcoinExchange& operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 		float getRate(const std::string &inputDate) const;
-
+		void parseInput(std::string &file);
+		bool validateDate(const std::string &inputDate) const;
+		bool validateQuantity(const float &num) const;
+		void trimDate(std::string &date);
+		void run(std::string file);
 };

@@ -38,16 +38,22 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &other)
 
 BitcoinExchange::~BitcoinExchange() {}
 
-float BitcoinExchange::getRate(const std::string &inputDate) const
+
+
+float BitcoinExchange::getRate(std::string inputDate)
 {
+	// std::cout << "inputdate === " << inputDate << std::endl;
+	inputDate.erase(std::remove(inputDate.begin(), inputDate.end(), '-'), inputDate.end());
 	std::map<std::string, float>::const_iterator it = rates.lower_bound(inputDate);
 
+	// std::cout << "checkdate === " << it->first << std::endl;
 	if (it == rates.end() || it->first > inputDate)
 	{
 		if (it == rates.begin())
-			throw std::runtime_error("No earlier echange rate available.");
+			throw std::runtime_error("No earlier exchange rate available.");
 		--it;
 	}
+	// std::cout << "returning " << it->second << " for " << it->first << std::endl;
 	return it->second;
 }
 
@@ -91,9 +97,25 @@ bool BitcoinExchange::validateQuantity(const float &num) const
 
 	if (num > maxInput)
 	{
-		std::cout << "Error: too large a number => " << num << std::endl;
+		std::cout << "Error: too large a number => " << std::fixed << std::setprecision(0) << num << std::endl;
 		return false;
 	}
+	return true;
+}
+
+bool BitcoinExchange::extractFloat(std::string &string, float &quantity)
+{
+	std::stringstream ss(string);
+	if (!(ss >> quantity))
+		throw std::runtime_error("Failed to read stringstream, terminating program.");
+
+	ss >> std::ws;
+	if (ss.peek() != EOF)
+	{
+		std::cout << "Error: input number invalid => " << string << std::endl;
+		return false;
+	}
+	
 	return true;
 }
 
@@ -107,28 +129,28 @@ void BitcoinExchange::run(std::string file)
 	std::getline(data, line);
 	while (std::getline(data, line))
 	{
-		line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
-		if (line.empty()) // || line.find("|") == std::string::npos
+		if (line.empty())
 			continue ;
 		
+		if (line.find('|') == std::string::npos)
+		{
+			std::cout << "Error: invalid input => " << line << std::endl;
+			continue ;
+		}
+
+		line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
 		std::string date = line.substr(0, line.find("|"));
 		std::string quantityStr = line.substr(line.find("|") + 1);
 
-		std::stringstream ss(quantityStr);
 		float quantity;
-		ss >> quantity;
-
+		if (extractFloat(quantityStr, quantity) == false)
+			continue ;
+		
 		if (validateQuantity(quantity) == false)
 			continue ;
 
-		// std::cout << "Inserting " << date << " + " << quantity << "\n" << std::endl;
 		if (validateDate(date) == false)
 			continue ;
 		std::cout << date << " >> " << quantity << " = " << getRate(date) * quantity << std::endl;
-	}
-
-	for (auto it = input.begin(); it != input.end(); ++it)
-	{
-		std::cout << it->first << " >> " << it->second << std::endl;
 	}
 }

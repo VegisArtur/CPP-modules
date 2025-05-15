@@ -7,19 +7,45 @@ void PmergeMe::printVector()
 	std::cout << std::endl;
 }
 
-void PmergeMe::insertVector(std::vector<int> &vec)
+void PmergeMe::printDeque()
 {
-	for (size_t i = 1; i < vec.size(); ++i)
+	for (size_t i = 0; i < dequeSet.size(); ++i)
+		std::cout << dequeSet[i] << " ";
+	std::cout << std::endl;
+}
+
+void PmergeMe::insertVector(std::vector<int> &left, std::vector<int> &right, std::vector<int> &vec)
+{
+	// std::vector<int>::iterator itLeft = left.begin();
+	// std::vector<int>::iterator itRight = right.begin();
+
+	// while (itLeft != left.end() && itRight != right.end())
+	// {
+	// 	if (*itLeft < *itRight)
+	// 		vec.push_back(*itLeft++);
+	// 	else
+	// 		vec.push_back(*itRight++);
+	// }
+	
+	// while (itLeft != left.end())
+	// 	vec.push_back(*itLeft++);
+	// while (itRight != right.end())
+	// 	vec.push_back(*itRight++);
+	
+	size_t i = 0, j = 0;
+	while (i < left.size() && j < right.size())
 	{
-		int key = vec[i];
-		int j = i - 1;
-		while (j >= 0 && vec[j] > key)
-		{
-			vec[j + 1] = vec[j];
-			--j;
-		}
-		vec[j + 1] = key;
+		if (left[i] < right[j])
+			vec.push_back(left[i++]);
+		else
+			vec.push_back(right[j++]);
 	}
+
+	while (i < left.size())
+		vec.push_back(left[i++]);
+
+	while (j < right.size())
+		vec.push_back(right[j++]);
 }
 
 void PmergeMe::sortVector(std::vector<int> &vec)
@@ -35,10 +61,7 @@ void PmergeMe::sortVector(std::vector<int> &vec)
 	sortVector(right);
 
 	vec.clear();
-	vec.insert(vec.end(), left.begin(), left.end());
-	vec.insert(vec.end(), right.begin(), right.end());
-
-	insertVector(vec);
+	insertVector(left, right, vec);
 }
 
 void PmergeMe::handleVector()
@@ -75,6 +98,21 @@ void PmergeMe::insertDeque(std::deque<int>& left, std::deque<int>& right, std::d
 		deq.push_back(*itLeft++);
 	while (itRight != right.end())
 		deq.push_back(*itRight++);
+
+	// size_t i = 0, j = 0;
+	// while (i < left.size() && j < right.size())
+	// {
+	// 	if (left[i] < right[j])
+	// 		deq.push_back(left[i++]);
+	// 	else
+	// 		deq.push_back(right[j++]);
+	// }
+
+	// while (i < left.size())
+	// 	deq.push_back(left[i++]);
+
+	// while (j < right.size())
+	// 	deq.push_back(right[j++]);
 }
 
 void PmergeMe::sortDeque(std::deque<int> &deq)
@@ -95,12 +133,16 @@ void PmergeMe::sortDeque(std::deque<int> &deq)
 
 void PmergeMe::handleDeque()
 {
+	// std::cout << "Before = ";
+	// printDeque();
 	auto start = std::chrono::high_resolution_clock::now();
 	sortDeque(dequeSet);
 	auto end = std::chrono::high_resolution_clock::now();
+	// std::cout << "After = ";
+	// printDeque();
 	std::chrono::duration<double> duration = end - start;
 
-	std::cout << "Time to process a range of " << vectorSet.size()
+	std::cout << "Time to process a range of " << dequeSet.size()
 		<< " elements with std::deque : "
 		<< std::fixed << std::setprecision(5)
 		<< duration.count() * 1e6 << " us" << std::endl;

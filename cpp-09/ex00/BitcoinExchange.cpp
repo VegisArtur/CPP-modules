@@ -42,18 +42,15 @@ BitcoinExchange::~BitcoinExchange() {}
 
 float BitcoinExchange::getRate(std::string inputDate)
 {
-	// std::cout << "inputdate === " << inputDate << std::endl;
 	inputDate.erase(std::remove(inputDate.begin(), inputDate.end(), '-'), inputDate.end());
 	std::map<std::string, float>::const_iterator it = rates.lower_bound(inputDate);
 
-	// std::cout << "checkdate === " << it->first << std::endl;
 	if (it == rates.end() || it->first > inputDate)
 	{
 		if (it == rates.begin())
 			throw std::runtime_error("No earlier exchange rate available.");
 		--it;
 	}
-	// std::cout << "returning " << it->second << " for " << it->first << std::endl;
 	return it->second;
 }
 
@@ -78,7 +75,12 @@ bool BitcoinExchange::validateDate(const std::string &inputDate) const
 		return false;
 	}
 
-	if (day < 1 || day > monthDays[month - 1])
+	int maxDay = monthDays[month - 1];
+
+	if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)))
+		maxDay = 29;
+
+	if (day < 1 || day > maxDay)
 	{
 		std::cout << "Error: Bad input => " << inputDate << std::endl;
 		return false;
@@ -105,6 +107,12 @@ bool BitcoinExchange::validateQuantity(const float &num) const
 
 bool BitcoinExchange::extractFloat(std::string &string, float &quantity)
 {
+	if (string.empty())
+	{
+		std::cout << "Error: input number invalid => [" << string << "]" << std::endl;
+		return false;
+	}
+
 	std::stringstream ss(string);
 	if (!(ss >> quantity))
 		throw std::runtime_error("Failed to read stringstream, terminating program.");

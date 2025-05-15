@@ -5,7 +5,7 @@ int main(int argc, char **argv)
 	if (argc < 2)
 	{
 		std::cerr << "Usage: " << argv[0] << " <sequence of positive integers>" << std::endl;
-		return false;
+		return 1;
 	}
 
 	std::vector<int> vecInput;
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 		if (val < 0)
 		{
 			std::cerr << "Error: only positive integers allowed." << std::endl;
-			return false;
+			return 1;
 		}
 		vecInput.push_back(val);
 		dequeInput.push_back(val);
@@ -27,4 +27,6 @@ int main(int argc, char **argv)
 		std::cout << std::endl;
 	
 	PmergeMe algorithm(vecInput, dequeInput);
+	
+	return 0;
 }

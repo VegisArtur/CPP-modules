@@ -12,7 +12,7 @@ class PmergeMe
 		std::vector<int> vectorSet;
 		std::deque<int> dequeSet;
 		
-		void insertVector(std::vector<int> &vec);
+		void insertVector(std::vector<int> &left, std::vector<int> &right, std::vector<int> &vec);
 		void insertDeque(std::deque<int>& left, std::deque<int>& right, std::deque<int>& deq);
 		void sortVector(std::vector<int> &vec);
 		void sortDeque(std::deque<int> &deq);

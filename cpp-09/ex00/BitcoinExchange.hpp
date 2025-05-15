@@ -27,10 +27,8 @@ class BitcoinExchange
 		BitcoinExchange& operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 		float getRate(std::string inputDate);
-		void parseInput(std::string &file);
 		bool validateDate(const std::string &inputDate) const;
 		bool validateQuantity(const float &num) const;
-		void trimDate(std::string &date);
 		bool extractFloat(std::string &string, float &quantity);
 		void run(std::string file);
 };
